@@ -1,0 +1,2329 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TerraCeramics - фасадная керамика для B2B-проектов</title>
+  <meta
+    name="description"
+    content="Терракотовые панели и клинкерная плитка для вентилируемых фасадов жилых и административных зданий. Расчет, документация и поставка по России."
+  />
+  <style>
+    :root {
+      --bg: #f5f3ee;
+      --surface: rgba(255, 255, 255, 0.82);
+      --surface-solid: #ffffff;
+      --surface-muted: #ece7df;
+      --stroke: rgba(28, 29, 30, 0.1);
+      --text: #171819;
+      --text-muted: #636466;
+      --accent: #c56f45;
+      --accent-dark: #a4552f;
+      --accent-soft: #efe2da;
+      --dark: #202226;
+      --success: #466655;
+      --shadow: 0 18px 50px rgba(19, 24, 32, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --container: 1240px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(197, 111, 69, 0.08), transparent 32%),
+        linear-gradient(180deg, #faf8f4 0%, #f5f3ee 100%);
+      line-height: 1.55;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 96px 0;
+    }
+
+    .section.tight {
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(28, 29, 30, 0.08);
+      color: var(--text-muted);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex: 0 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 40px;
+      max-width: 760px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      font-size: 18px;
+      color: var(--text-muted);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(245, 243, 238, 0.85);
+      border-bottom: 1px solid rgba(28, 29, 30, 0.06);
+    }
+
+    .topbar-inner {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 28px;
+      min-height: 82px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 150px;
+      height: auto;
+    }
+
+    .nav {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      font-size: 15px;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--text);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .contact-mini {
+      display: grid;
+      gap: 2px;
+      text-align: right;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .contact-mini strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(197, 111, 69, 0.2);
+    }
+
+    .button.primary:hover,
+    .button.primary:focus-visible {
+      background: var(--accent-dark);
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.72);
+      border-color: rgba(28, 29, 30, 0.08);
+      color: var(--text);
+    }
+
+    .button.secondary:hover,
+    .button.secondary:focus-visible {
+      background: #fff;
+    }
+
+    .hero {
+      padding: 28px 0;
+      min-height: calc(100vh - 82px);
+    }
+
+    .hero > .container {
+      min-height: calc(100vh - 138px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-shell {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0 4px;
+      height: 100%;
+    }
+
+    .hero-copy-main {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      font-size: clamp(32px, 4.2vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      max-width: 640px;
+    }
+
+    .hero-copy p.lead {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.44;
+      color: var(--text-muted);
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(28, 29, 30, 0.08);
+      box-shadow: var(--shadow);
+      min-height: 92px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 17px;
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      display: block;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .hero-visual {
+      position: relative;
+      height: 100%;
+      min-height: 0;
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-slider {
+      position: relative;
+      height: 100%;
+      min-height: 100%;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .hero-slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(19, 24, 32, 0.12), rgba(19, 24, 32, 0.54));
+    }
+
+    .hero-slide.is-active {
+      opacity: 1;
+    }
+
+    .hero-caption {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      display: grid;
+      gap: 6px;
+      color: #fff;
+      z-index: 2;
+    }
+
+    .hero-caption strong {
+      font-size: 24px;
+      line-height: 1.1;
+      max-width: 440px;
+    }
+
+    .hero-caption span {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 14px;
+      max-width: 390px;
+    }
+
+    .hero-form {
+      display: grid;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(28, 29, 30, 0.08);
+      box-shadow: var(--shadow);
+      min-height: 100%;
+      align-content: center;
+    }
+
+    .hero-form-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .hero-inline-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .hero-inline-grid .button {
+      height: 100%;
+      min-height: 46px;
+    }
+
+    .hero-form-band {
+      margin-top: 0;
+    }
+
+    .hero-bottom-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .input,
+    .textarea {
+      width: 100%;
+      border: 1px solid rgba(28, 29, 30, 0.08);
+      background: rgba(245, 243, 238, 0.8);
+      border-radius: 16px;
+      padding: 13px 14px;
+      color: var(--text);
+      outline: none;
+      transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .input:focus,
+    .textarea:focus {
+      border-color: rgba(197, 111, 69, 0.45);
+      background: #fff;
+    }
+
+    .textarea {
+      min-height: 96px;
+      resize: vertical;
+      grid-column: 1 / -1;
+    }
+
+    .form-foot {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .form-foot small,
+    .note {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(28, 29, 30, 0.08);
+      color: var(--text-muted);
+      font-size: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--surface-solid);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition:
+        transform 0.22s ease,
+        border-color 0.22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(197, 111, 69, 0.2);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+      line-height: 1.15;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .product-card {
+      display: grid;
+      gap: 18px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(28, 29, 30, 0.08);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      transition: transform 0.22s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .product-thumb {
+      width: 84px;
+      height: 84px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #fff, #f2ede6);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(28, 29, 30, 0.06);
+    }
+
+    .product-thumb img {
+      width: 74px;
+      height: 74px;
+      object-fit: contain;
+    }
+
+    .product-card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      line-height: 1.15;
+    }
+
+    .product-card p {
+      margin: 0;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    .feature-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .feature-panel {
+      background: var(--dark);
+      color: #fff;
+      border-radius: 30px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .feature-panel h3 {
+      margin: 0 0 16px;
+      font-size: 34px;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .feature-panel p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 17px;
+    }
+
+    .feature-panel .button {
+      margin-top: 28px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(28, 29, 30, 0.08);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-card strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .projects-head-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .projects-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .projects-arrow {
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      border: 1px solid rgba(28, 29, 30, 0.08);
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--text);
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .projects-arrow:hover {
+      transform: translateY(-2px);
+      background: #fff;
+    }
+
+    .projects-page {
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 600;
+      min-width: 52px;
+      text-align: center;
+    }
+
+    .project-card {
+      display: grid;
+      gap: 18px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 24px;
+      border: 1px solid rgba(28, 29, 30, 0.08);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .project-image {
+      aspect-ratio: 0.92;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.04);
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.15;
+    }
+
+    .project-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    .project-card {
+      cursor: pointer;
+    }
+
+    .project-card::after {
+      content: "Смотреть галерею";
+      display: inline-flex;
+      width: fit-content;
+      margin-top: 4px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .gallery-modal[hidden] {
+      display: none;
+    }
+
+    .gallery-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(17, 19, 22, 0.82);
+      backdrop-filter: blur(12px);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .gallery-dialog {
+      width: min(1120px, 100%);
+      max-height: calc(100vh - 48px);
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 18px;
+      padding: 20px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
+    }
+
+    .gallery-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .gallery-head h3 {
+      margin: 0 0 6px;
+      font-size: 28px;
+      line-height: 1.08;
+    }
+
+    .gallery-head p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    .gallery-close {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(28, 29, 30, 0.08);
+      background: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .gallery-stage {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #f2efe9;
+      min-height: 0;
+    }
+
+    .gallery-stage img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #f2efe9;
+    }
+
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: var(--shadow);
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .gallery-arrow.prev {
+      left: 16px;
+    }
+
+    .gallery-arrow.next {
+      right: 16px;
+    }
+
+    .gallery-thumbs {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 10px;
+    }
+
+    .gallery-thumb {
+      border: 2px solid transparent;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+      padding: 0;
+      cursor: pointer;
+      aspect-ratio: 1.15;
+    }
+
+    .gallery-thumb.active {
+      border-color: var(--accent);
+    }
+
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .spec-grid,
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .spec-card,
+    .doc-card {
+      padding: 24px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(28, 29, 30, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .spec-card strong,
+    .doc-card strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 18px;
+      line-height: 1.15;
+    }
+
+    .spec-card p,
+    .doc-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    .process {
+      display: grid;
+      gap: 14px;
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 22px;
+      border: 1px solid rgba(28, 29, 30, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .step-index {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    .process-step h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      line-height: 1.15;
+    }
+
+    .process-step p {
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    .faq {
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(28, 29, 30, 0.08);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 24px;
+      text-align: left;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .faq-question span:last-child {
+      font-size: 28px;
+      line-height: 1;
+      color: var(--accent-dark);
+      transition: transform 0.2s ease;
+    }
+
+    .faq-item.open .faq-question span:last-child {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 24px 24px;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    .contact-shell {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .contact-panel,
+    .contact-form-panel {
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 28px;
+      border: 1px solid rgba(28, 29, 30, 0.08);
+      box-shadow: var(--shadow);
+      padding: 30px;
+    }
+
+    .contact-panel h3,
+    .contact-form-panel h3 {
+      margin: 0 0 16px;
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    .contact-panel p,
+    .contact-form-panel p {
+      margin: 0 0 24px;
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(245, 243, 238, 0.8);
+      border: 1px solid rgba(28, 29, 30, 0.06);
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-2px);
+      background: #fff;
+    }
+
+    .contact-link strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+
+    .contact-link span {
+      display: block;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .footer {
+      padding: 36px 0 120px;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(28, 29, 30, 0.08);
+      padding-top: 24px;
+    }
+
+    .footer-brand {
+      display: grid;
+      gap: 10px;
+      max-width: 480px;
+    }
+
+    .footer-brand img {
+      width: 150px;
+    }
+
+    .mobile-bar {
+      display: none;
+      position: fixed;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      z-index: 25;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(28, 29, 30, 0.08);
+      border-radius: 20px;
+      box-shadow: 0 18px 40px rgba(19, 24, 32, 0.16);
+      backdrop-filter: blur(16px);
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity 0.45s ease,
+        transform 0.45s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1180px) {
+      .hero-shell,
+      .feature-layout,
+      .contact-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .product-grid,
+      .projects-grid,
+      .spec-grid,
+      .docs-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+    }
+
+    @media (max-width: 920px) {
+      .topbar-inner {
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 68px;
+        padding: 10px 0;
+      }
+
+      .nav,
+      .contact-mini {
+        display: none;
+      }
+
+      .brand img {
+        width: 124px;
+      }
+
+      .header-actions .button {
+        padding: 12px 18px;
+      }
+
+      .hero-copy {
+        padding-top: 10px;
+      }
+
+      .hero-visual {
+        min-height: 480px;
+      }
+
+      .hero-bottom-grid,
+      .cards,
+      .product-grid,
+      .feature-grid,
+      .projects-grid,
+      .spec-grid,
+      .docs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-head-row {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .stats,
+      .form-grid,
+      .hero-inline-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 78px 0;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(var(--container), calc(100% - 20px));
+      }
+
+      .hero-copy h1 {
+        font-size: 34px;
+      }
+
+      .hero-visual {
+        min-height: 360px;
+        border-radius: 24px;
+      }
+
+      .hero-caption {
+        left: 14px;
+        right: 14px;
+        bottom: 18px;
+      }
+
+      .feature-panel,
+      .contact-panel,
+      .contact-form-panel {
+        padding: 22px;
+      }
+
+      .process-step {
+        grid-template-columns: 1fr;
+      }
+
+      .step-index {
+        width: 62px;
+        height: 62px;
+        border-radius: 16px;
+      }
+
+      .mobile-bar {
+        display: grid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#hero" class="brand" aria-label="TerraCeramics">
+        <img src="assets/images/terraceramics/img-001.png" alt="TerraCeramics" />
+      </a>
+
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="#products">Продукция</a>
+        <a href="#projects">Объекты</a>
+        <a href="#specs">Технические данные</a>
+        <a href="#process">Как работаем</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="contact-mini">
+          <strong>8 (383) 363-20-12</strong>
+          <span>TerraCeramicsNSK@yandex.ru</span>
+        </div>
+        <a class="button primary" href="#contact">Получить расчет</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-shell">
+          <div class="hero-copy reveal">
+            <div class="hero-copy-main">
+              <div class="eyebrow">Производство Фасадной керамики для B2B-проектов по всей России</div>
+
+              <div>
+                <h1>Терракотовые панели и клинкерная плитка для современных вентилируемых фасадов</h1>
+              </div>
+
+              <p class="lead">
+                Подбираем решение под архитектурную концепцию, технические требования проекта и сроки поставки.
+                Помогаем с расчетом, документацией и сопровождением фасадных объектов по всей России.
+              </p>
+
+              <div class="hero-actions">
+                <a class="button primary" href="#contact">Получить расчет фасада</a>
+                <a class="button secondary" href="#docs">Запросить тех. материалы</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal">
+            <div class="hero-slider js-hero-slider"></div>
+          </div>
+        </div>
+
+        <div class="hero-bottom-grid">
+          <div class="stats reveal">
+            <div class="stat">
+              <strong>С 2013 года</strong>
+              <span>на рынке фасадной керамики и проектных поставок</span>
+            </div>
+            <div class="stat">
+              <strong>По всей России</strong>
+              <span>логистика от Калининграда до Владивостока</span>
+            </div>
+            <div class="stat">
+              <strong>Тех. пакет</strong>
+              <span>документация, сертификаты и сопровождение проекта</span>
+            </div>
+          </div>
+
+          <form class="hero-form hero-form-band js-mail-form reveal" data-subject="Запрос расчета с первого экрана TerraCeramics">
+            <div class="hero-form-note">Быстрый запрос расчета</div>
+            <div class="hero-inline-grid">
+              <input class="input" type="text" name="name" placeholder="Имя" required />
+              <input class="input" type="text" name="contact" placeholder="Телефон или email" required />
+              <button class="button primary" type="submit">Отправить заявку</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight" id="audiences">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Кому подходит решение</div>
+          <h2>Помогаем командам проекта на разных этапах</h2>
+          <p>
+            TerraCeramics работает не только как поставщик материала, но и как партнер по подбору решения,
+            документации и сопровождению фасадного проекта.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <h3>Архитекторы</h3>
+            <p>Подбор фактур, цветов и выразительных фасадных решений под архитектурную концепцию здания.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Проектировщики</h3>
+            <p>Технические характеристики, узлы, документация и поддержка при адаптации решения под проект.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Подрядчики</h3>
+            <p>Понятная раскладка, точная геометрия элементов и сопровождение на этапе реализации и монтажа.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Девелоперы</h3>
+            <p>Надежность поставки, срок службы, сопровождение проекта и понятная экономика решения.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Госзаказчики</h3>
+            <p>Документы, тендерная пригодность, соответствие требованиям проекта и предсказуемое исполнение.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="products">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Продуктовая линейка</div>
+          <h2>Линейка фасадных решений TerraCeramics</h2>
+          <p>Подберем материал под архитектурную задачу, технические требования объекта и бюджет проекта.</p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card reveal">
+            <div class="product-thumb">
+              <img src="assets/images/terraceramics/img-002.jpeg" alt="Терракотовые панели" />
+            </div>
+            <div>
+              <h3>Терракотовые панели</h3>
+              <p>Для выразительных современных фасадов с широким выбором размеров, рельефов, текстур и цветов.</p>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-thumb">
+              <img src="assets/images/terraceramics/img-003.jpeg" alt="Клинкерная плитка" />
+            </div>
+            <div>
+              <h3>Клинкерная плитка</h3>
+              <p>Для долговечных фасадных решений, где важны устойчивость к климату и архитектурная выразительность.</p>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-thumb">
+              <img src="assets/images/terraceramics/img-004.jpeg" alt="Керамические ламели" />
+            </div>
+            <div>
+              <h3>Керамические ламели</h3>
+              <p>Для экранов, акцентных фасадных элементов и архитектурных решений с глубиной и ритмом.</p>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-thumb">
+              <img src="assets/images/terraceramics/img-005.png" alt="Системы крепления" />
+            </div>
+            <div>
+              <h3>Системы крепления</h3>
+              <p>Для комплексной реализации фасадного решения с учетом геометрии, узлов и монтажной логики.</p>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-thumb">
+              <img src="assets/images/terraceramics/img-006.png" alt="Объемная керамика" />
+            </div>
+            <div>
+              <h3>Объемная керамика</h3>
+              <p>Для проектов, где важна пластика фасада, нестандартный образ и работа с архитектурным ритмом.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="advantages">
+      <div class="container feature-layout">
+        <div class="feature-panel reveal">
+          <div class="eyebrow">Почему TerraCeramics</div>
+          <h3>Надежный поставщик фасадной керамики для сложных проектов</h3>
+          <p>
+            Мы помогаем не только выбрать материал, но и пройти путь от подбора решения до поставки и
+            сопровождения проекта без лишних рисков по срокам и документации.
+          </p>
+          <a class="button primary" href="#contact">Получить консультацию инженера</a>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <strong>Широкий выбор фактур и цветов</strong>
+            <p>Подбор решения под архитектурный образ здания, а не только по базовым типоразмерам.</p>
+          </article>
+          <article class="feature-card reveal">
+            <strong>Безопасность и качество</strong>
+            <p>Сертификаты и подтвержденные характеристики для проектной, тендерной и закупочной работы.</p>
+          </article>
+          <article class="feature-card reveal">
+            <strong>Логистика по всей России</strong>
+            <p>Поставки по регионам и крупным объектам: от Калининграда до Владивостока.</p>
+          </article>
+          <article class="feature-card reveal">
+            <strong>Комплексное сопровождение</strong>
+            <p>Поддержка от подбора материала и раскладки до консультаций на этапе монтажа.</p>
+          </article>
+          <article class="feature-card reveal">
+            <strong>Технологичное производство</strong>
+            <p>Стабильное качество продукции и производственный подход, ориентированный на результат проекта.</p>
+          </article>
+          <article class="feature-card reveal">
+            <strong>Собственная ресурсная база</strong>
+            <p>Контроль качества сырья и снижение зависимости от внешних факторов поставки.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="projects-head-row reveal">
+          <div class="section-head" style="margin-bottom: 0;">
+            <div class="eyebrow">Реализованные объекты</div>
+            <h2>Реальные объекты, где материал уже работает</h2>
+            <p>
+            В портфолио TerraCeramics жилые, общественные, коммерческие и медицинские объекты в разных
+            регионах России. Эти проекты показывают, как фасадная керамика работает в реальной
+            архитектуре и эксплуатации.
+            </p>
+          </div>
+
+          <div class="projects-nav" aria-label="Навигация по объектам">
+            <button class="projects-arrow js-projects-prev" type="button" aria-label="Предыдущие объекты">&#8592;</button>
+            <div class="projects-page js-projects-page">1 / 4</div>
+            <button class="projects-arrow js-projects-next" type="button" aria-label="Следующие объекты">&#8594;</button>
+          </div>
+        </div>
+
+        <div class="projects-grid js-projects-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="specs">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Технические аргументы</div>
+          <h2>Свойства, важные для проекта и эксплуатации</h2>
+          <p>
+            Фасадная керамика TerraCeramics сочетает выразительную архитектуру с эксплуатационными
+            характеристиками, важными для проектирования, согласования и долгого срока службы здания.
+          </p>
+        </div>
+
+        <div class="spec-grid">
+          <article class="spec-card reveal">
+            <strong>Огнестойкость</strong>
+            <p>Решение для объектов, где критичны требования к пожарной безопасности и нормативной базе.</p>
+          </article>
+          <article class="spec-card reveal">
+            <strong>Стойкость к влаге и климату</strong>
+            <p>Материал устойчив к перепадам температур, солнечному воздействию и влажности.</p>
+          </article>
+          <article class="spec-card reveal">
+            <strong>Паропроницаемость</strong>
+            <p>Важный аргумент для корректной и долговечной работы фасадной системы.</p>
+          </article>
+          <article class="spec-card reveal">
+            <strong>Звуко- и теплоизоляция</strong>
+            <p>Дополнительная ценность с точки зрения эксплуатационного комфорта объекта.</p>
+          </article>
+          <article class="spec-card reveal">
+            <strong>Биологическая надежность</strong>
+            <p>Материал не боится плесени, грибков и неблагоприятной внешней среды.</p>
+          </article>
+          <article class="spec-card reveal">
+            <strong>Эстетическая стабильность</strong>
+            <p>Фасад сохраняет аккуратный внешний вид и архитектурную выразительность на долгом горизонте.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight" id="docs">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Документы и проектные материалы</div>
+          <h2>Все, что нужно для проектирования и согласования</h2>
+          <p>
+            Предоставляем материалы, которые помогают быстрее принимать решение по проекту: технические
+            данные, каталоги, сертификаты и информацию для подбора нужного решения.
+          </p>
+        </div>
+
+        <div class="docs-grid">
+          <article class="doc-card reveal">
+            <strong>Сертификаты и разрешительная документация</strong>
+            <p>Подтверждение качества, безопасности и пригодности материалов для проектных и закупочных задач.</p>
+          </article>
+          <article class="doc-card reveal">
+            <strong>Каталоги продукции и цвета</strong>
+            <p>Фактуры, форматы, оттенки и линейки для быстрого подбора решения под концепцию фасада.</p>
+          </article>
+          <article class="doc-card reveal">
+            <strong>Технические материалы и сопровождение</strong>
+            <p>Пакет материалов для рабочей коммуникации с архитекторами, проектировщиками и подрядчиками.</p>
+          </article>
+        </div>
+
+        <div style="margin-top: 28px" class="reveal">
+          <a class="button primary" href="#contact">Запросить документацию</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Как строится работа</div>
+          <h2>Понятный процесс от запроса до реализации</h2>
+          <p>
+            Работаем по понятному проектному сценарию: от первых вводных и подбора материала до
+            расчета, поставки и сопровождения реализации на объекте.
+          </p>
+        </div>
+
+        <div class="process">
+          <article class="process-step reveal">
+            <div class="step-index">01</div>
+            <div>
+              <h3>Получаем вводные по объекту</h3>
+              <p>Вы оставляете заявку и указываете тип объекта, площадь, регион и интересующий материал.</p>
+            </div>
+          </article>
+          <article class="process-step reveal">
+            <div class="step-index">02</div>
+            <div>
+              <h3>Подбираем решение</h3>
+              <p>Помогаем определить материал, формат, цвет, фактуру и техническую конфигурацию под задачу проекта.</p>
+            </div>
+          </article>
+          <article class="process-step reveal">
+            <div class="step-index">03</div>
+            <div>
+              <h3>Готовим расчет и материалы</h3>
+              <p>Формируем расчет, подбираем документы и уточняем параметры поставки под проект.</p>
+            </div>
+          </article>
+          <article class="process-step reveal">
+            <div class="step-index">04</div>
+            <div>
+              <h3>Сопровождаем поставку</h3>
+              <p>Согласовываем логистику, сроки, спецификацию и проектные детали по комплектации.</p>
+            </div>
+          </article>
+          <article class="process-step reveal">
+            <div class="step-index">05</div>
+            <div>
+              <h3>Поддерживаем на этапе реализации</h3>
+              <p>Консультируем по вопросам применения решений и сопровождаем проект на практическом уровне.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight" id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">FAQ</div>
+          <h2>Частые вопросы перед выбором фасадного решения</h2>
+          <p>Собрали ответы на вопросы, которые чаще всего возникают перед выбором фасадной системы, запросом расчета и подготовкой проектной документации.</p>
+        </div>
+
+        <div class="faq">
+          <div class="faq-item reveal open">
+            <button class="faq-question" type="button">
+              <span>С какими типами объектов вы работаете?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer" style="max-height: 240px;">
+              <div class="faq-answer-inner">
+                TerraCeramics работает с жилыми, административными, общественными и другими объектами,
+                где применяются навесные вентилируемые фасады и фасадная керамика.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button">
+              <span>Можно ли подобрать решение под конкретную архитектурную концепцию?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Да. Мы помогаем подобрать формат, цвет, фактуру и тип материала под архитектурную задачу проекта.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button">
+              <span>Предоставляете ли вы техническую документацию?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Да. По запросу предоставляем технические материалы, сертификаты и сопроводительную документацию.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button">
+              <span>Работаете ли вы с нестандартными решениями?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Да. Если задача требует нестандартного подхода, мы рассматриваем решение под конкретный проект.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button">
+              <span>Можно ли организовать поставку в регион?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Да. TerraCeramics работает с логистикой по всей России и помогает согласовать поставку под проектный график.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button">
+              <span>Сопровождаете ли вы проект после поставки?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Да. Компания консультирует по вопросам применения и реализации фасадных решений на объекте.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-shell">
+        <div class="contact-panel reveal">
+          <div class="eyebrow">Контакты и заявка</div>
+          <h3>Получите расчет и рекомендации по вашему проекту</h3>
+          <p>
+            Оставьте контакты и кратко опишите задачу. Мы поможем подобрать решение, подготовим расчет
+            и подскажем, какие материалы подойдут именно вашему объекту.
+          </p>
+
+          <div class="contact-links">
+            <a class="contact-link" href="tel:+73833632012">
+              <div>
+                <strong>8 (383) 363-20-12</strong>
+                <span>Основной телефон для консультации</span>
+              </div>
+              <span>Позвонить</span>
+            </a>
+            <a class="contact-link" href="tel:+79139139246">
+              <div>
+                <strong>+7 913 913-92-46</strong>
+                <span>Дополнительный контакт</span>
+              </div>
+              <span>Позвонить</span>
+            </a>
+            <a class="contact-link" href="mailto:TerraCeramicsNSK@yandex.ru">
+              <div>
+                <strong>TerraCeramicsNSK@yandex.ru</strong>
+                <span>Для заявок и проектных запросов</span>
+              </div>
+              <span>Написать</span>
+            </a>
+            <a class="contact-link" href="https://vk.ru/terra.ceramica_nsk" target="_blank" rel="noreferrer">
+              <div>
+                <strong>ВКонтакте TerraCeramics</strong>
+                <span>Актуальный публичный канал компании</span>
+              </div>
+              <span>Открыть</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form-panel reveal">
+          <h3>Отправить заявку на расчет</h3>
+          <p>
+            Если удобнее, можно сразу оставить параметры проекта здесь. В прототипе форма формирует письмо
+            на рабочий email компании.
+          </p>
+
+          <form class="js-mail-form" data-subject="Запрос расчета TerraCeramics">
+            <div class="form-grid">
+              <input class="input" type="text" name="name" placeholder="Имя" required />
+              <input class="input" type="text" name="company" placeholder="Компания" />
+              <input class="input" type="text" name="contact" placeholder="Телефон или email" required />
+              <input class="input" type="text" name="product" placeholder="Тип материала или объекта" />
+              <textarea class="textarea" name="message" placeholder="Кратко опишите задачу: объект, площадь, регион, сроки, пожелания"></textarea>
+            </div>
+
+            <div class="form-foot" style="margin-top: 16px;">
+              <small>Если удобнее, можно сразу отправить параметры проекта на email.</small>
+              <button class="button primary" type="submit">Отправить заявку на расчет</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="gallery-modal" id="galleryModal" hidden>
+    <div class="gallery-dialog" role="dialog" aria-modal="true" aria-labelledby="galleryTitle">
+      <div class="gallery-head">
+        <div>
+          <h3 id="galleryTitle">Галерея объекта</h3>
+          <p id="galleryMeta">Дополнительные фотографии выбранного объекта</p>
+        </div>
+        <button class="gallery-close" type="button" aria-label="Закрыть галерею">&times;</button>
+      </div>
+
+      <div class="gallery-stage">
+        <button class="gallery-arrow prev" type="button" aria-label="Предыдущая фотография">&#8592;</button>
+        <img id="galleryImage" src="" alt="" />
+        <button class="gallery-arrow next" type="button" aria-label="Следующая фотография">&#8594;</button>
+      </div>
+
+      <div class="gallery-thumbs" id="galleryThumbs"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/images/terraceramics/img-001.png" alt="TerraCeramics" />
+        <span>TerraCeramics - фасадная керамика для жилых, административных и общественных объектов.</span>
+      </div>
+
+      <div class="contact-mini" style="text-align: left;">
+        <strong>TerraCeramicsNSK@yandex.ru</strong>
+        <span>8 (383) 363-20-12 · +7 913 913-92-46</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-bar">
+    <a class="button secondary" href="tel:+73833632012">Позвонить</a>
+    <a class="button primary" href="#contact">Расчет</a>
+  </div>
+
+  <script>
+    const revealNodes = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    revealNodes.forEach((node) => observer.observe(node));
+
+    const projectsData = [
+      {
+        title: "БЦ «На Инженерной»",
+        city: "г. Новосибирск",
+        type: "Бизнес-центр",
+        image: "assets/images/terraceramics/img-007.jpg",
+        summary: "Деловой объект, где важны строгая геометрия фасада, выразительность материала и аккуратный современный ритм.",
+      },
+      {
+        title: "ЖК «Марсель 2» на Заровного",
+        city: "г. Новосибирск",
+        type: "Жилой объект",
+        image: "assets/images/terraceramics/img-008.jpg",
+        summary: "Жилой проект с акцентом на современный образ фасада и устойчивость решения в городской среде.",
+      },
+      {
+        title: "СК «Красный Октябрь»",
+        city: "г. Москва",
+        type: "Коммерческий объект",
+        image: "assets/images/terraceramics/img-009.jpg",
+        summary: "Кейс, где фасадная керамика помогает сформировать узнаваемый и статусный внешний вид объекта.",
+      },
+      {
+        title: "ЖК «Астра»",
+        city: "г. Пермь",
+        type: "Жилой объект",
+        image: "assets/images/terraceramics/img-010.jpg",
+        summary: "Объект, в котором материал работает на чистоту линий и долгий срок службы фасада.",
+      },
+      {
+        title: "Образовательный центр «Сириус»",
+        city: "г. Сочи",
+        type: "Общественный объект",
+        image: "assets/images/terraceramics/img-011.jpg",
+        summary: "Показательный пример объекта, где важны и архитектурная выразительность, и техническая надежность решения.",
+      },
+      {
+        title: "АК «Моравия»",
+        city: "г. Сочи",
+        type: "Жилой объект",
+        image: "assets/images/terraceramics/img-012.jpg",
+        summary: "Жилой комплекс с акцентом на современный характер фасада и устойчивость материала к климату.",
+      },
+      {
+        title: "Гостиничный комплекс. Наб. Обводного канала 118",
+        city: "г. Санкт-Петербург",
+        type: "Гостиничный объект",
+        image: "assets/images/terraceramics/img-013.jpg",
+        summary: "Объект, где керамика работает как часть премиального и долговечного фасадного образа.",
+      },
+      {
+        title: "Центр эндокринологии",
+        city: "г. Москва",
+        type: "Медицинский объект",
+        image: "assets/images/terraceramics/img-014.jpg",
+        summary: "Рациональный пример для проектов, где критичны долговечность, чистота линий и техническая надежность фасада.",
+      },
+      {
+        title: "ЖК «Сосновый Бор»",
+        city: "г. Сочи",
+        type: "Жилой объект",
+        image: "assets/images/terraceramics/img-015.jpg",
+        summary: "Проект, где материал работает на устойчивость фасада к климату и одновременно на визуальное качество объекта.",
+      },
+      {
+        title: "Театрально-образовательный комплекс",
+        city: "г. Владивосток, о. Русский",
+        type: "Общественный объект",
+        image: "assets/images/terraceramics/img-016.jpeg",
+        summary: "Крупный общественный объект, где терракота становится частью выразительного и статусного архитектурного решения.",
+      },
+      {
+        title: "Novotel",
+        city: "г. Санкт-Петербург",
+        type: "Гостиничный объект",
+        image: "assets/images/terraceramics/img-017.jpg",
+        summary: "Фасадный кейс, где материал одновременно работает на архитектуру, срок службы и премиальное восприятие объекта.",
+      },
+      {
+        title: "Академгородок",
+        city: "г. Новосибирск",
+        type: "Городской объект",
+        image: "assets/images/terraceramics/img-018.jpeg",
+        summary: "Пример объекта, где керамика помогает сохранить современный характер фасада в городской среде.",
+      },
+      {
+        title: "ЖК Черная речка",
+        city: "г. Санкт-Петербург",
+        type: "Жилой объект",
+        image: "assets/images/terraceramics/img-019.jpg",
+        summary: "Девелоперский проект с акцентом на визуальную чистоту, статусность и долговечность фасадного решения.",
+      },
+      {
+        title: "ЖК Astra Marine",
+        city: "г. Санкт-Петербург",
+        type: "Жилой объект",
+        image: "assets/images/terraceramics/img-020.jpg",
+        summary: "Современный жилой объект, где важны ритм фасада, качество отделки и цельный архитектурный образ.",
+      },
+      {
+        title: "ЖК «Искра Парк»",
+        city: "г. Москва",
+        type: "Жилой объект",
+        image: "assets/images/terraceramics/img-021.jpg",
+        summary: "Городской жилой объект, где керамика работает на архитектурную выразительность и чистую геометрию фасада.",
+      },
+      {
+        title: "ЖК Grand View",
+        city: "г. Санкт-Петербург",
+        type: "Жилой объект",
+        image: "assets/images/terraceramics/img-022.jpg",
+        summary: "Кейс для девелоперских проектов, где важны визуальный статус объекта и надежная фасадная система.",
+      },
+      {
+        title: "Клиника «ЕВРОМЕД» на Писарева",
+        city: "г. Новосибирск",
+        type: "Медицинский объект",
+        image: "assets/images/terraceramics/img-023.jpg",
+        summary: "Пример объекта с высокими требованиями к качеству исполнения, эстетике и долговечности облицовки.",
+      },
+      {
+        title: "ЖК «Марсель 2» на Обской",
+        city: "г. Новосибирск",
+        type: "Жилой объект",
+        image: "assets/images/terraceramics/img-024.jpg",
+        summary: "Жилой объект, где фасадное решение помогает держать единый современный архитектурный ритм.",
+      },
+      {
+        title: "ЖК Белый Остров",
+        city: "г. Санкт-Петербург",
+        type: "Жилой объект",
+        image: "assets/images/terraceramics/img-025.jpg",
+        summary: "Современный жилой кейс для проектов, где важны чистота линий и визуальное качество фасадной оболочки.",
+      },
+      {
+        title: "ЖК Amber Club",
+        city: "г. Санкт-Петербург",
+        type: "Жилой объект",
+        image: "assets/images/terraceramics/img-026.jpg",
+        summary: "Премиальный пример жилого проекта, где фасад формирует статус и устойчивый визуальный образ.",
+      },
+      {
+        title: "ЖК «Neva-Neva»",
+        city: "г. Санкт-Петербург",
+        type: "Жилой объект",
+        image: "assets/images/terraceramics/img-027.jpg",
+        summary: "Жилой фасадный проект, где важны архитектурная выразительность, стойкость материала и цельный внешний образ здания.",
+      },
+    ];
+
+    const projectGalleries = {
+      "БЦ «На Инженерной»": [
+        "assets/images/terraceramics/img-007.jpg",
+        "assets/images/terraceramics/img-028.jpg",
+        "assets/images/terraceramics/img-029.jpg",
+        "assets/images/terraceramics/img-030.jpg",
+      ],
+      "ЖК «Марсель 2» на Заровного": [
+        "assets/images/terraceramics/img-008.jpg",
+        "assets/images/terraceramics/img-031.jpg",
+        "assets/images/terraceramics/img-032.jpg",
+        "assets/images/terraceramics/img-033.jpg",
+        "assets/images/terraceramics/img-034.jpg",
+      ],
+      "СК «Красный Октябрь»": [
+        "assets/images/terraceramics/img-009.jpg",
+        "assets/images/terraceramics/img-035.jpg",
+        "assets/images/terraceramics/img-036.jpg",
+        "assets/images/terraceramics/img-037.jpg",
+        "assets/images/terraceramics/img-038.jpg",
+      ],
+      "ЖК «Астра»": [
+        "assets/images/terraceramics/img-010.jpg",
+      ],
+      "Образовательный центр «Сириус»": [
+        "assets/images/terraceramics/img-011.jpg",
+        "assets/images/terraceramics/img-039.jpg",
+        "assets/images/terraceramics/img-040.jpg",
+        "assets/images/terraceramics/img-041.jpg",
+      ],
+      "АК «Моравия»": [
+        "assets/images/terraceramics/img-012.jpg",
+        "assets/images/terraceramics/img-042.jpg",
+        "assets/images/terraceramics/img-043.jpg",
+        "assets/images/terraceramics/img-044.jpg",
+        "assets/images/terraceramics/img-045.jpg",
+      ],
+      "Гостиничный комплекс. Наб. Обводного канала 118": [
+        "assets/images/terraceramics/img-013.jpg",
+        "assets/images/terraceramics/img-046.jpg",
+        "assets/images/terraceramics/img-047.jpg",
+        "assets/images/terraceramics/img-048.jpg",
+        "assets/images/terraceramics/img-049.jpg",
+        "assets/images/terraceramics/img-050.jpg",
+      ],
+      "Центр эндокринологии": [
+        "assets/images/terraceramics/img-014.jpg",
+        "assets/images/terraceramics/img-051.jpg",
+        "assets/images/terraceramics/img-052.jpg",
+        "assets/images/terraceramics/img-053.jpg",
+        "assets/images/terraceramics/img-054.jpg",
+      ],
+      "ЖК «Сосновый Бор»": [
+        "assets/images/terraceramics/img-015.jpg",
+        "assets/images/terraceramics/img-055.jpg",
+        "assets/images/terraceramics/img-056.jpg",
+        "assets/images/terraceramics/img-057.jpg",
+        "assets/images/terraceramics/img-058.jpg",
+      ],
+      "Театрально-образовательный комплекс": [
+        "assets/images/terraceramics/img-016.jpeg",
+      ],
+      "Novotel": [
+        "assets/images/terraceramics/img-017.jpg",
+        "assets/images/terraceramics/img-059.jpg",
+        "assets/images/terraceramics/img-060.jpg",
+        "assets/images/terraceramics/img-061.jpg",
+        "assets/images/terraceramics/img-062.jpg",
+      ],
+      "Академгородок": [
+        "assets/images/terraceramics/img-018.jpeg",
+        "assets/images/terraceramics/img-063.jpg",
+      ],
+      "ЖК Черная речка": [
+        "assets/images/terraceramics/img-019.jpg",
+        "assets/images/terraceramics/img-064.jpg",
+        "assets/images/terraceramics/img-065.jpg",
+        "assets/images/terraceramics/img-066.jpg",
+        "assets/images/terraceramics/img-067.jpg",
+      ],
+      "ЖК Astra Marine": [
+        "assets/images/terraceramics/img-020.jpg",
+        "assets/images/terraceramics/img-068.jpg",
+        "assets/images/terraceramics/img-069.jpg",
+        "assets/images/terraceramics/img-070.jpg",
+        "assets/images/terraceramics/img-071.jpg",
+      ],
+      "ЖК «Искра Парк»": [
+        "assets/images/terraceramics/img-021.jpg",
+      ],
+      "ЖК Grand View": [
+        "assets/images/terraceramics/img-022.jpg",
+        "assets/images/terraceramics/img-072.jpg",
+        "assets/images/terraceramics/img-073.jpg",
+        "assets/images/terraceramics/img-074.jpg",
+        "assets/images/terraceramics/img-075.jpg",
+        "assets/images/terraceramics/img-076.jpg",
+      ],
+      "Клиника «ЕВРОМЕД» на Писарева": [
+        "assets/images/terraceramics/img-023.jpg",
+        "assets/images/terraceramics/img-077.jpg",
+        "assets/images/terraceramics/img-078.jpg",
+        "assets/images/terraceramics/img-079.jpg",
+      ],
+      "ЖК «Марсель 2» на Обской": [
+        "assets/images/terraceramics/img-024.jpg",
+        "assets/images/terraceramics/img-080.jpg",
+        "assets/images/terraceramics/img-081.jpg",
+        "assets/images/terraceramics/img-082.jpg",
+      ],
+      "ЖК Белый Остров": [
+        "assets/images/terraceramics/img-025.jpg",
+        "assets/images/terraceramics/img-083.jpg",
+        "assets/images/terraceramics/img-084.jpg",
+        "assets/images/terraceramics/img-085.jpg",
+        "assets/images/terraceramics/img-086.jpg",
+      ],
+      "ЖК Amber Club": [
+        "assets/images/terraceramics/img-026.jpg",
+        "assets/images/terraceramics/img-087.jpg",
+        "assets/images/terraceramics/img-088.jpg",
+        "assets/images/terraceramics/img-089.jpg",
+        "assets/images/terraceramics/img-090.jpg",
+        "assets/images/terraceramics/img-091.jpg",
+      ],
+      "ЖК «Neva-Neva»": [
+        "assets/images/terraceramics/img-027.jpg",
+        "assets/images/terraceramics/img-092.jpg",
+        "assets/images/terraceramics/img-093.jpg",
+        "assets/images/terraceramics/img-094.jpg",
+        "assets/images/terraceramics/img-095.jpg",
+      ],
+    };
+
+    projectsData.forEach((project) => {
+      project.gallery = projectGalleries[project.title] || [project.image];
+    });
+
+    const heroSlider = document.querySelector(".js-hero-slider");
+    const projectsGrid = document.querySelector(".js-projects-grid");
+    const projectsPage = document.querySelector(".js-projects-page");
+    const projectsPrev = document.querySelector(".js-projects-prev");
+    const projectsNext = document.querySelector(".js-projects-next");
+    const galleryModal = document.getElementById("galleryModal");
+    const galleryTitle = document.getElementById("galleryTitle");
+    const galleryMeta = document.getElementById("galleryMeta");
+    const galleryImage = document.getElementById("galleryImage");
+    const galleryThumbs = document.getElementById("galleryThumbs");
+    const galleryClose = document.querySelector(".gallery-close");
+    const galleryPrev = document.querySelector(".gallery-arrow.prev");
+    const galleryNext = document.querySelector(".gallery-arrow.next");
+    const projectsPerPage = 6;
+    const projectsTotalPages = Math.ceil(projectsData.length / projectsPerPage);
+
+    if (heroSlider) {
+      heroSlider.innerHTML = projectsData
+        .map(
+          (project, index) => `
+            <article class="hero-slide${index === 0 ? " is-active" : ""}" style="background-image:url('${project.image}')">
+              <div class="hero-caption">
+                <strong>${project.title}</strong>
+                <span>${project.summary}</span>
+              </div>
+            </article>
+          `
+        )
+        .join("");
+    }
+
+    let heroSlides = Array.from(document.querySelectorAll(".hero-slide"));
+    let activeHeroSlide = 0;
+    let heroSliderTimer = null;
+    let activeProjectsPage = 0;
+    let activeGalleryProjectIndex = 0;
+    let activeGalleryImageIndex = 0;
+
+    function setHeroSlide(index) {
+      heroSlides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("is-active", slideIndex === index);
+      });
+
+      activeHeroSlide = index;
+    }
+
+    function startHeroSlider() {
+      if (!heroSlides.length) {
+        return;
+      }
+
+      heroSliderTimer = window.setInterval(() => {
+        const nextIndex = (activeHeroSlide + 1) % heroSlides.length;
+        setHeroSlide(nextIndex);
+      }, 3600);
+    }
+
+    startHeroSlider();
+
+    function renderProjectsPage(pageIndex) {
+      if (!projectsGrid) {
+        return;
+      }
+
+      const start = pageIndex * projectsPerPage;
+      const end = start + projectsPerPage;
+      const projectsSlice = projectsData.slice(start, end);
+
+      projectsGrid.innerHTML = projectsSlice
+        .map(
+          (project, index) => `
+            <article class="project-card reveal visible" data-project-index="${start + index}" tabindex="0">
+              <div class="project-image">
+                <img src="${project.image}" alt="${project.title}" />
+              </div>
+              <div class="project-meta">
+                <span>${project.city}</span>
+                <span>${project.type}</span>
+              </div>
+              <h3>${project.title}</h3>
+              <p>${project.summary}</p>
+            </article>
+          `
+        )
+        .join("");
+
+      if (projectsPage) {
+        projectsPage.textContent = `${pageIndex + 1} / ${projectsTotalPages}`;
+      }
+    }
+
+    projectsPrev?.addEventListener("click", () => {
+      activeProjectsPage = (activeProjectsPage - 1 + projectsTotalPages) % projectsTotalPages;
+      renderProjectsPage(activeProjectsPage);
+    });
+
+    projectsNext?.addEventListener("click", () => {
+      activeProjectsPage = (activeProjectsPage + 1) % projectsTotalPages;
+      renderProjectsPage(activeProjectsPage);
+    });
+
+    renderProjectsPage(activeProjectsPage);
+
+    function renderGallery() {
+      const project = projectsData[activeGalleryProjectIndex];
+      const images = project.gallery && project.gallery.length ? project.gallery : [project.image];
+      const currentImage = images[activeGalleryImageIndex] || project.image;
+
+      galleryTitle.textContent = project.title;
+      galleryMeta.textContent = `${project.city} · ${project.type} · ${activeGalleryImageIndex + 1} / ${images.length}`;
+      galleryImage.src = currentImage;
+      galleryImage.alt = project.title;
+
+      galleryThumbs.innerHTML = images
+        .map(
+          (src, index) => `
+            <button class="gallery-thumb${index === activeGalleryImageIndex ? " active" : ""}" type="button" data-image-index="${index}" aria-label="Фото ${index + 1}">
+              <img src="${src}" alt="${project.title} ${index + 1}" />
+            </button>
+          `
+        )
+        .join("");
+    }
+
+    function openGallery(projectIndex) {
+      activeGalleryProjectIndex = projectIndex;
+      activeGalleryImageIndex = 0;
+      renderGallery();
+      galleryModal.hidden = false;
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeGallery() {
+      galleryModal.hidden = true;
+      document.body.style.overflow = "";
+    }
+
+    function stepGallery(direction) {
+      const project = projectsData[activeGalleryProjectIndex];
+      const images = project.gallery && project.gallery.length ? project.gallery : [project.image];
+      activeGalleryImageIndex = (activeGalleryImageIndex + direction + images.length) % images.length;
+      renderGallery();
+    }
+
+    projectsGrid?.addEventListener("click", (event) => {
+      const card = event.target.closest(".project-card");
+      if (!card) {
+        return;
+      }
+      openGallery(Number(card.dataset.projectIndex));
+    });
+
+    projectsGrid?.addEventListener("keydown", (event) => {
+      const card = event.target.closest(".project-card");
+      if (!card) {
+        return;
+      }
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openGallery(Number(card.dataset.projectIndex));
+      }
+    });
+
+    galleryClose?.addEventListener("click", closeGallery);
+    galleryPrev?.addEventListener("click", () => stepGallery(-1));
+    galleryNext?.addEventListener("click", () => stepGallery(1));
+
+    galleryThumbs?.addEventListener("click", (event) => {
+      const thumb = event.target.closest(".gallery-thumb");
+      if (!thumb) {
+        return;
+      }
+      activeGalleryImageIndex = Number(thumb.dataset.imageIndex);
+      renderGallery();
+    });
+
+    galleryModal?.addEventListener("click", (event) => {
+      if (event.target === galleryModal) {
+        closeGallery();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (galleryModal?.hidden) {
+        return;
+      }
+
+      if (event.key === "Escape") {
+        closeGallery();
+      }
+
+      if (event.key === "ArrowLeft") {
+        stepGallery(-1);
+      }
+
+      if (event.key === "ArrowRight") {
+        stepGallery(1);
+      }
+    });
+
+    document.querySelectorAll(".faq-question").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq-item");
+        const answer = item.querySelector(".faq-answer");
+        const isOpen = item.classList.contains("open");
+
+        document.querySelectorAll(".faq-item").forEach((faq) => {
+          faq.classList.remove("open");
+          faq.querySelector(".faq-answer").style.maxHeight = "0px";
+        });
+
+        if (!isOpen) {
+          item.classList.add("open");
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        }
+      });
+    });
+
+    document.querySelectorAll(".js-mail-form").forEach((form) => {
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const data = new FormData(form);
+        const subject = form.dataset.subject || "Заявка с лендинга TerraCeramics";
+        const body = [
+          "Имя: " + (data.get("name") || ""),
+          "Компания: " + (data.get("company") || ""),
+          "Телефон / email: " + (data.get("contact") || ""),
+          "Тип материала / задачи: " + (data.get("product") || ""),
+          "",
+          "Комментарий:",
+          data.get("message") || "",
+        ].join("\n");
+
+        window.location.href =
+          "mailto:TerraCeramicsNSK@yandex.ru?subject=" +
+          encodeURIComponent(subject) +
+          "&body=" +
+          encodeURIComponent(body);
+      });
+    });
+  </script>
+</body>
+</html>
